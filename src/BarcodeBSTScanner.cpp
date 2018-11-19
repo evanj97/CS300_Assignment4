@@ -5,6 +5,15 @@
  *      Author: Evan
  */
 
+#include <iostream>
+#include <time.h>
+#include <sstream>
+#include "BinaryTree.h"
+#include "BarcodeIndex.h"
 
+using namespace std;
 
+int main()
+{
 
+}
