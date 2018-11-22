@@ -1,8 +1,10 @@
 /*
- * BinaryTree.h
+ * Evan Johnson
+ * CS300 Fall 2018
+ * 21 November, 2018
+ * Assignment 4
  *
- *  Created on: Nov 19, 2018
- *      Author: Evan
+ * BinaryTree.h
  */
 
 #ifndef BINARYTREE_H_

@@ -1,8 +1,11 @@
 /*
+ * Evan Johnson
+ * CS300 Fall 2018
+ * 21 November, 2018
+ * Assignment 4
+ *
  * BarcodeIndex.h
  *
- *  Created on: Nov 19, 2018
- *      Author: Evan
  */
 
 #ifndef BARCODEINDEX_H_
@@ -17,27 +20,22 @@
 #include <time.h>
 #include <array>
 
-static const int DataSetLimit = 100;
-
 struct map
 {
 	string key;
 	string val;
 
-	bool operator<(const map& in) // for BST search/add function
+	bool operator<(const map& in)
 	{
 		return key < in.key;
 	}
-	bool operator>(const map& in) // for BST search/add function
+	bool operator>(const map& in)
 	{
 		return key > in.key;
 	}
-	bool operator==(const map& in) // for BST search function
+	bool operator==(const map& in)
 	{
-		if (key == in.key)
-			return true;
-		else
-			return false;
+		return key == in.key;
 	}
 	map& operator=(const map& in)
 	{
@@ -55,18 +53,20 @@ private:
 	BinaryTree<map>* tree;
 	map* arr;
 	int count;
+	int DataSetLimit;
 
 public:
-	BarcodeIndex();
+	BarcodeIndex(int);
 	bool readFile(string);
 	void search(clock_t&, clock_t&, string&, string&);
 };
 
-BarcodeIndex::BarcodeIndex() // Constructor
+BarcodeIndex::BarcodeIndex(int in) // Constructor
 {
 	tree = new BinaryTree<map>();
 	arr = new map[1100000];
 	count = 0;
+	DataSetLimit = in;
 }
 
 bool BarcodeIndex::readFile(string _fileName) // reads file
@@ -106,11 +106,12 @@ bool BarcodeIndex::readFile(string _fileName) // reads file
 	}
 	inFile.close();
 
-	cout << "Finished loading file. " << count - 1 << " elements loaded." << endl;
+	cout << "Finished loading file. " << count << " elements loaded." << endl;
 
 	return true;
 }
 
+// performs searches
 void BarcodeIndex::search(clock_t& arrayTime, clock_t& treeTime, string& description, string& UPC)
 {
 
