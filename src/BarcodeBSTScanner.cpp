@@ -11,8 +11,29 @@ using namespace std;
 
 int main()
 {
+	clock_t arrayTime;
+	clock_t treeTime;
+	string desc;
+	string UPC;
 
+	BarcodeIndex* ind = new BarcodeIndex();
 
+	cout << "pre readFile" << endl;
 
+	ind->readFile("/Users/Evan/Desktop/CS 300/upc_corpus.txt");
+
+	while (1)
+	{
+		cout << "UPC Code: " << endl;
+		cin >> UPC;
+
+		ind->search(arrayTime, treeTime, desc, UPC);
+
+		cout << desc << endl;
+		cout << "BST Time: " << treeTime << endl;
+		cout << "Array Time: " << arrayTime << endl;
+
+	}
 
 }
+

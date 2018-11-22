@@ -26,6 +26,7 @@ class BinaryTree // Binary Search Tree Class
 
 private:
 	Node<T>* treeRoot;
+	long count;
 
 public:
 
@@ -41,6 +42,7 @@ public:
 	T findMax(T&);
 	bool search(T&);
 	void deleteNode(T&);
+
 private:
 
 	void insert(Node<T>* &, T&); // recursive
@@ -70,27 +72,33 @@ void BinaryTree<T>::deleteNode(Node<T>*& p, T& item)
 	if (p == NULL)
 		return;
 	if (item < p->data)
+	{
 		deleteNode(p->left, item);
+		count--;
+	}
 	if (item > p->data)
+	{
 		deleteNode(p->right, item);
+		count--;
+	}
 	else // found
 	{
-
-		if (p->right != NULL && p->left != NULL) // node with 2 childeren
+		if (p->right != NULL && p->left != NULL) // node with 2 children
 		{
 			T maxNode = findMax(p->left, item);
 			p->data = maxNode;
 			deleteNode(p->left, max);
+			count--;
 		}
 		else if (p->left != NULL)
 		{
 			p = p->left;
 		}
 
-//		else if (p->right != NULL)
-//		{
-//
-//		}
+		else if (p->right != NULL)
+		{
+
+		}
 	}
 }
 
@@ -117,6 +125,7 @@ bool BinaryTree<T>::search(Node<T>* p, T& item)
 	}
 	else
 	{
+		item = p->data;
 		return 1;
 	}
 }
