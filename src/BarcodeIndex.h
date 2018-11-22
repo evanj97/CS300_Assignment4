@@ -17,6 +17,8 @@
 #include <time.h>
 #include <array>
 
+static const int DataSetLimit = 100;
+
 struct map
 {
 	string key;
@@ -87,7 +89,7 @@ bool BarcodeIndex::readFile(string _fileName) // reads file
 
 	cout << "file successfully loaded" << endl;
 
-	while (inFile.good()) // read file and store entries in objects pointed to by array
+	while (inFile.good() && count < DataSetLimit) // read file and store entries in objects pointed to by array
 	{
 		getline(inFile, code, ',');
 		getline(inFile, desc);

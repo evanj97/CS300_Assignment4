@@ -20,7 +20,7 @@ int main()
 
 	cout << "pre readFile" << endl;
 
-	ind->readFile("/Users/Evan/Desktop/CS 300/upc_corpus.txt");
+	ind->readFile("upc_corpus.txt");
 
 	while (1)
 	{
