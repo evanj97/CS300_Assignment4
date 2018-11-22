@@ -95,10 +95,11 @@ bool BarcodeIndex::readFile(string _fileName) // reads file
 		temp.key = code;
 		temp.val = desc;
 
-		arr[count] = temp;
+		arr[count] = temp; // add item to array
 		count++;
-		tree->insert(temp);
-		if (count % 1000 == 0)
+		tree->insert(temp); // add item to BST
+
+		if (count % 1000 == 0) // debug
 			cout << count << endl;
 	}
 	inFile.close();
