@@ -3,6 +3,7 @@
  * CS300 Fall 2018
  * 21 November, 2018
  * Assignment 4
+ * Resubmitted on 3 December, 2018
  *
  * BinaryTree.h
  */

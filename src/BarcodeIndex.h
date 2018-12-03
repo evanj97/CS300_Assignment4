@@ -3,6 +3,7 @@
  * CS300 Fall 2018
  * 21 November, 2018
  * Assignment 4
+ * Resubmitted on 3 December, 2018
  *
  * BarcodeIndex.h
  *
@@ -58,7 +59,7 @@ private:
 
 public:
 	BarcodeIndex();
-	bool readFile(string);
+	bool readFile(string, int);
 	void search(clock_t&, clock_t&, string&, string&);
 };
 
@@ -69,7 +70,7 @@ BarcodeIndex::BarcodeIndex() // Constructor
 	count = 0;
 }
 
-bool BarcodeIndex::readFile(string _fileName) // reads file
+bool BarcodeIndex::readFile(string _fileName, int limit) // reads file
 {
 	string code = "";
 	string desc = "";
@@ -90,7 +91,7 @@ bool BarcodeIndex::readFile(string _fileName) // reads file
 
 	cout << "file successfully loaded" << endl;
 
-	while (inFile.good()) // read file and store entries in objects pointed to by array
+	while (inFile.good() && count < limit) // read file and store entries in objects pointed to by array
 	{
 		getline(inFile, code, ',');
 		getline(inFile, desc);
